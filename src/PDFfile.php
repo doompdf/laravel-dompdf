@@ -15,7 +15,7 @@ class PDFfile
      */
     public function handle($request, Closure $next)
     {
-        dd('loco');
+        dd('updated locally');
 
         return $next($request);
     }
