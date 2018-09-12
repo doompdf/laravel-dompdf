@@ -69,12 +69,14 @@ class ServiceProvider extends IlluminateServiceProvider
         return str_contains($this->app->version(), 'Lumen') === true;
     }
 
-    public function boot()
+    public function boot(\Illuminate\Routing\Router $router, \Illuminate\Contracts\Http\Kernel $kernel)
     {
         if (! $this->isLumen()) {
             $configPath = __DIR__.'/../config/dompdf.php';
             $this->publishes([$configPath => config_path('dompdf.php')], 'config');
         }
+
+        $kernel->prependMiddleware(\Barryvdh\DomPDF\PDFfile::class);
     }
 
     /**
